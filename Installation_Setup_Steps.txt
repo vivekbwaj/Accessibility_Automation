@@ -82,6 +82,18 @@ Install support for colored output on Windows
 - follow instructions on http://qastuffs.blogspot.com.au/2011/02/how-to-install-ansicon-for-cucumber-to.html
 #################################################
 download driver for different browsers and in the hooks.rb file change the path for the driver
+
+CHROME - hooks.rb
+puts __FILE__
+chromedriver_path=File.expand_path('../../driverDependencies/chromedriver.exe', File.dirname(__FILE__))
+profile = Selenium::WebDriver::Chrome::Profile.new
+#profile.native_events = false
+browser = Watir::Browser.new :chrome, :switches => %w[--disable-popup-blocking]
+
+FIREFOX - hooks.rb
+profile = Selenium::WebDriver::Firefox::Profile.new
+profile.native_events = false
+browser = Watir::Browser.new :firefox, :profile => profile
 #############################################
 
 Close your cmd shell, open a new one and cd to this directory
